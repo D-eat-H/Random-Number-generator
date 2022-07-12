@@ -1,0 +1,33 @@
+from datetime import datetime
+# random(-5, -3) = random(0, 2)
+# random(3, 4) = 3 + random(0, 1)
+def randomization():
+  while True:
+    low = int(input('low: '))
+    high = int(input('high: '))
+    if low > high: print('high >= unda iyos gaunatlebelo')
+    elif(low == high): print(low)
+    else: print(low + randomFromZero(high - low))
+
+#range is power of 2 and at each step we'r going to left or right with equal probability (choosing time's string's last, fastest changing element)
+def binaryRandomization(left, right, n):
+  while(left < right and left <= n):
+    mid = (left + right) // 2
+    if(int(str(datetime.now().time())[-1]) & 1): left = mid + 1
+    else: right = mid;
+  return left
+
+def nextPowerOf2(n):
+  p = 1;
+  while(p <= n): p <<= 1
+  return --p
+
+# return random number from [0 - n]
+def randomFromZero(n):
+  N = n #but N must be 2^k - 1, because range must be 2^k
+  if(n & (n + 1)): N = nextPowerOf2(n) #sth like dummy nodes
+  res = n + 1
+  while(res > n): res = binaryRandomization(0, N, n)
+  return res
+
+randomization()
