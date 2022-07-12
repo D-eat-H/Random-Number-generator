@@ -5,7 +5,7 @@ def randomization():
   while True:
     low = int(input('low: '))
     high = int(input('high: '))
-    if low > high: print('high >= unda iyos gaunatlebelo')
+    if low > high: print('high >= low must be true!')
     elif(low == high): print(low)
     else: print(low + randomFromZero(high - low))
 
